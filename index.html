@@ -10,20 +10,15 @@
     :root{
       --bg1:#0b1020;
       --bg2:#1a2336;
-      --card:#0f1626cc;
-      --card2:#0f1626b3;
       --white:#ffffff;
       --muted:rgba(255,255,255,.78);
-      --muted2:rgba(255,255,255,.62);
-      --line:rgba(255,255,255,.12);
       --shadow:0 20px 60px rgba(0,0,0,.55);
       --shadowSoft:0 12px 28px rgba(0,0,0,.35);
       --radius:26px;
       --btnRadius:22px;
-      --accent:#f2a007; /* orange Arthurimmo-ish */
+      --accent:#f2a007;
       --accent2:#d78900;
     }
-
     *{box-sizing:border-box}
     body{
       margin:0;
@@ -38,14 +33,7 @@
       justify-content:center;
       padding:22px 16px 34px;
     }
-
-    .wrap{
-      width:min(420px, 100%);
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-    }
-
+    .wrap{ width:min(420px, 100%); }
     .card{
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       border:1px solid rgba(255,255,255,.10);
@@ -54,7 +42,6 @@
       overflow:hidden;
       position:relative;
     }
-
     .card::before{
       content:"";
       position:absolute; inset:-2px;
@@ -63,27 +50,15 @@
         radial-gradient(420px 260px at 50% 100%, rgba(255,255,255,.08), transparent 60%);
       pointer-events:none;
     }
+    .inner{ position:relative; padding:26px 18px 18px; }
 
-    .inner{
-      position:relative;
-      padding:26px 18px 18px;
-    }
-
-    /* Logo */
-    .logoWrap{
-      display:flex;
-      justify-content:center;
-      margin-top:2px;
-      margin-bottom:14px;
-    }
+    .logoWrap{ display:flex; justify-content:center; margin:2px 0 14px; }
     .logoRing{
       width:140px; height:140px;
       border-radius:999px;
       background: rgba(255,255,255,.10);
       border:6px solid rgba(255,255,255,.80);
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      display:flex; align-items:center; justify-content:center;
       box-shadow: 0 18px 40px rgba(0,0,0,.45);
     }
     .logo{
@@ -94,7 +69,6 @@
       display:block;
     }
 
-    /* Identity */
     .name{
       text-align:center;
       font-weight:850;
@@ -104,7 +78,6 @@
       margin:0 0 10px 0;
       text-shadow: 0 10px 20px rgba(0,0,0,.35);
     }
-
     .subtitle{
       text-align:center;
       margin:0 0 18px 0;
@@ -112,13 +85,12 @@
       font-weight:600;
       font-size:18px;
       line-height:1.35;
-      white-space:nowrap; /* force une seule ligne */
+      white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
       padding:0 6px;
     }
 
-    /* Buttons */
     .btn{
       width:100%;
       border:none;
@@ -136,13 +108,11 @@
       user-select:none;
       -webkit-tap-highlight-color: transparent;
     }
-
     .btnPrimary{
       background: linear-gradient(180deg, var(--accent), var(--accent2));
       color:#fff;
       margin: 6px 0 14px;
     }
-
     .btnGhost{
       background: rgba(255,255,255,.86);
       color:#111;
@@ -150,16 +120,8 @@
       margin: 0 0 14px;
       font-weight:800;
     }
+    .btnGhost .icon{ width:34px; display:inline-flex; justify-content:center; font-size:22px; opacity:.9; }
 
-    .btnGhost .icon{
-      width:34px;
-      display:inline-flex;
-      justify-content:center;
-      font-size:22px;
-      opacity:.9;
-    }
-
-    /* bottom compact links */
     .footerLinks{
       margin-top: 8px;
       padding: 8px 8px 2px;
@@ -175,10 +137,9 @@
       text-decoration:none;
       font-weight:650;
     }
-    .footerLinks a:active{opacity:.8}
     .footerLinks .sep{opacity:.35}
 
-    /* Responsive */
+    /* petit ajustement mobile */
     @media (max-width: 390px){
       .name{font-size:36px}
       .subtitle{font-size:16px}
@@ -196,32 +157,26 @@
 
         <div class="logoWrap">
           <div class="logoRing" aria-hidden="true">
-            <!-- ⚠️ Ton fichier dans le repo : logo-arthurimmo.JPG -->
             <img class="logo" src="logo-arthurimmo.JPG" alt="Logo Arthurimmo" />
           </div>
         </div>
 
         <h1 class="name">Nicolas Castan</h1>
-
-        <!-- 1 ligne, comme tu aimes -->
         <p class="subtitle">Agent immobilier | Arthurimmo Lavelanet</p>
 
-        <!-- Download VCF -->
-        <a class="btn btnPrimary" href="contact.vcf" download="Nicolas-Castan.vcf">
+        <!-- IMPORTANT : pas de download => iOS propose souvent "Ajouter aux contacts" -->
+        <a class="btn btnPrimary" href="contact.vcf" id="saveContactBtn">
           Sauvegarder le contact
         </a>
 
         <a class="btn btnGhost" href="tel:+33642031538">
-          <span class="icon">📞</span>
-          Appeler
+          <span class="icon">📞</span> Appeler
         </a>
 
         <a class="btn btnGhost" href="mailto:nicolas.castan@agence-arthurimmo.com">
-          <span class="icon">✉️</span>
-          Envoyer un email
+          <span class="icon">✉️</span> Envoyer un email
         </a>
 
-        <!-- Bas : plus petit (localisation + site) -->
         <div class="footerLinks" aria-label="Liens essentiels">
           <a id="mapsBtn" target="_blank" rel="noopener">📍 Localisation</a>
           <span class="sep">•</span>
@@ -233,11 +188,16 @@
   </main>
 
   <script>
-    // Itinéraire (Google Maps)
+    // Itinéraire Google Maps
     const ADDRESS = "2 Avenue Alsace Lorraine, 09300 Lavelanet, France";
-    const DEST = encodeURIComponent(ADDRESS);
     document.getElementById("mapsBtn").href =
-      "https://www.google.com/maps/dir/?api=1&destination=" + DEST;
+      "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(ADDRESS);
+
+    // Option robustesse iOS: ouvre dans le même onglet (évite certains blocages)
+    document.getElementById("saveContactBtn").addEventListener("click", (e) => {
+      // rien à faire : le lien direct vers contact.vcf suffit
+      // (si un jour besoin: window.location.href = "contact.vcf";
+    });
   </script>
 </body>
 </html>
