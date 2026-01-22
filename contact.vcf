@@ -1,11 +1,18 @@
 BEGIN:VCARD
 VERSION:3.0
+
 N:Castan;Nicolas;;;
 FN:Nicolas Castan
-ORG:Arthurimmo
+
+ORG:Arthurimmo Lavelanet
 TITLE:Agent immobilier
-TEL;TYPE=CELL:+33642031538
-EMAIL;TYPE=INTERNET:nicolas.castan@agence-arthurimmo.com
+
+TEL;TYPE=CELL,VOICE:+33642031538
+EMAIL;TYPE=WORK,INTERNET:nicolas.castan@agence-arthurimmo.com
+URL;TYPE=WORK:https://www.lavelanet-arthurimmo.com/
+
 ADR;TYPE=WORK:;;2 Avenue Alsace Lorraine;Lavelanet;;09300;France
-URL:https://www.lavelanet-arthurimmo.com/
+
+NOTE:Agent immobilier Arthurimmo – Lavelanet
+
 END:VCARD
