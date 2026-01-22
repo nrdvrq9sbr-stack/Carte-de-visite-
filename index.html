@@ -1,119 +1,240 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nicolas Castan — Agent immobilier</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#F3A300" />
+  <meta name="description" content="Carte de visite – Nicolas Castan (Arthurimmo Lavelanet)" />
+  <title>Nicolas Castan — Arthurimmo Lavelanet</title>
 
   <style>
     :root{
-      --bg:#2f363b;
-      --accent:#f5a623;
-      --text:#111;
-      --muted:#5a5a5a;
+      --bg1:#f6f7fb;
+      --bg2:#eef1f7;
       --card:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --brand:#F3A300;     /* proche Arthurimmo */
+      --brand2:#d98f00;
+      --shadow: 0 20px 50px rgba(17,24,39,.12);
+      --radius: 22px;
     }
 
+    *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
-      min-height:100vh;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1100px 700px at 30% 10%, #ffffff 0%, transparent 55%),
+        radial-gradient(900px 600px at 70% 0%, #fff3dc 0%, transparent 55%),
+        linear-gradient(160deg, var(--bg1), var(--bg2));
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:24px;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-      background: radial-gradient(1200px 600px at 50% 10%, rgba(255,255,255,.12), transparent 60%), var(--bg);
+      padding: 18px 14px calc(18px + env(safe-area-inset-bottom));
+    }
+
+    .wrap{
+      width:min(460px, 100%);
     }
 
     .card{
-      width:min(620px, 100%);
-      background:var(--card);
-      border-radius:22px;
-      padding:32px 28px;
-      box-shadow:0 18px 50px rgba(0,0,0,.28);
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.86));
+      border: 1px solid rgba(229,231,235,.7);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      overflow:hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Header compact */
+    .header{
+      padding: 18px 18px 12px;
+      text-align:center;
     }
 
     .logo{
-      display:flex;
-      justify-content:center;
-      margin:0 0 18px;
-    }
-    .logo img{
-      width:160px;
-      height:160px;
-      border-radius:999px;
-      object-fit:cover;
-      box-shadow:0 10px 22px rgba(0,0,0,.18);
-      border:6px solid #fff;
+      width: 120px;
+      height: 120px;
+      border-radius: 999px;
+      object-fit: cover;
+      background: #fff;
+      border: 8px solid rgba(255,255,255,.95);
+      box-shadow: 0 14px 28px rgba(17,24,39,.12);
+      display:block;
+      margin: 2px auto 12px;
     }
 
     h1{
+      margin: 0 0 6px;
+      font-size: 34px;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      font-weight: 800;
+    }
+
+    .subline{
       margin:0;
-      font-size:30px;
-      line-height:1.15;
-      text-align:center;
-      color:var(--text);
-      letter-spacing:.2px;
-    }
-    h2{
-      margin:10px 0 26px;
-      font-size:16px;
-      font-weight:500;
-      text-align:center;
-      color:var(--muted);
+      font-size: 15px;
+      color: var(--muted);
+      font-weight: 600;
+      letter-spacing: .01em;
+      white-space: nowrap;           /* reste sur une ligne */
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .buttons{margin-top:6px}
+    .content{
+      padding: 14px 18px 18px;
+    }
 
-    a.button{
+    .primary{
+      display:block;
+      width:100%;
+      border:0;
+      padding: 16px 18px;
+      border-radius: 16px;
+      font-weight: 800;
+      font-size: 16px;
+      color: #111827;
+      background: linear-gradient(180deg, var(--brand), var(--brand2));
+      box-shadow: 0 12px 22px rgba(243,163,0,.35);
+      text-decoration:none;
+      text-align:center;
+      transition: transform .12s ease, filter .12s ease;
+    }
+    .primary:active{transform: translateY(1px); filter: brightness(.98);}
+
+    .grid{
+      margin-top: 12px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .btn{
       display:flex;
       align-items:center;
       justify-content:center;
-      gap:10px;
-      padding:16px 14px;
-      margin:12px 0;
-      border-radius:14px;
+      gap: 10px;
+      width:100%;
+      padding: 14px 16px;
+      border-radius: 16px;
       text-decoration:none;
-      font-weight:700;
-      font-size:17px;
-      border:1px solid rgba(0,0,0,.06);
-      transition:transform .05s ease;
-      user-select:none;
-      -webkit-tap-highlight-color: transparent;
+      font-weight: 750;
+      color: #111827;
+      background: rgba(255,255,255,.85);
+      border: 1px solid rgba(229,231,235,.9);
+      box-shadow: 0 8px 18px rgba(17,24,39,.06);
+      transition: transform .12s ease, background .12s ease;
     }
-    a.button:active{transform:scale(.99)}
+    .btn:active{transform: translateY(1px); background: rgba(255,255,255,.95);}
 
-    .primary{background:var(--accent);color:#fff;border:none}
-    .secondary{background:#f4f4f4;color:#111}
+    .icon{
+      width: 18px; height: 18px;
+      display:inline-block;
+    }
 
-    .note{
-      margin-top:18px;
-      font-size:13px;
-      color:#8a8a8a;
-      text-align:center;
+    .divider{
+      height: 1px;
+      background: rgba(229,231,235,.75);
+      margin: 14px 0 10px;
+    }
+
+    .mini{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content:center;
+    }
+
+    .pill{
+      font-size: 12px;
+      color: var(--muted);
+      background: rgba(243,244,246,.85);
+      border: 1px solid rgba(229,231,235,.75);
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-weight: 650;
+    }
+
+    /* Pour écrans très petits : encore plus compact */
+    @media (max-height: 700px){
+      .logo{width:110px;height:110px}
+      h1{font-size:30px}
+      .primary{padding:14px 16px}
+      .btn{padding:12px 14px}
     }
   </style>
 </head>
 
 <body>
-  <div class="card">
+  <main class="wrap">
+    <section class="card" aria-label="Carte de visite Nicolas Castan">
+      <header class="header">
+        <!-- IMPORTANT: garde ce nom de fichier EXACT (sensibles à la casse) -->
+        <img class="logo" src="logo-arthurimmo.JPG" alt="Logo Arthurimmo" />
 
-    <div class="logo">
-      <img src="logo-arthurimmo.JPG" alt="Arthurimmo">
-    </div>
+        <h1>Nicolas Castan</h1>
+        <p class="subline">Agent immobilier | Arthurimmo Lavelanet</p>
+      </header>
 
-    <h1>Nicolas Castan</h1>
-    <h2>Agent immobilier — Arthurimmo Lavelanet</h2>
+      <div class="content">
+        <!-- Téléchargement vCard -->
+        <a class="primary" href="contact.vcf" download>
+          Sauvegarder le contact
+        </a>
 
-    <div class="buttons">
-      <a class="button primary" href="contact.vcf">Sauvegarder le contact</a>
-      <a class="button secondary" href="tel:+33642031538">Appeler</a>
-      <a class="button secondary" href="mailto:nicolas.castan@agence-arthurimmo.com">Envoyer un email</a>
-      <a class="button secondary" href="https://maps.google.com/?q=2+Avenue+Alsace+Lorraine+09300+Lavelanet">Itinéraire vers l’agence</a>
-      <a class="button secondary" href="https://www.lavelanet-arthurimmo.com/">Site de l’agence</a>
-    </div>
+        <div class="grid" role="navigation" aria-label="Actions">
+          <a class="btn" href="tel:+33642031538">
+            <span class="icon" aria-hidden="true">📞</span>
+            Appeler
+          </a>
 
-    <div class="note">Carte de visite digitale professionnelle</div>
-  </div>
+          <a class="btn" href="mailto:nicolas.castan@agence-arthurimmo.com">
+            <span class="icon" aria-hidden="true">✉️</span>
+            Envoyer un email
+          </a>
+
+          <!-- Remplace l'adresse si besoin -->
+          <a class="btn"
+             href="https://www.google.com/maps?q=2%20Avenue%20Alsace%20Lorraine%2C%2009300%20Lavelanet%2C%20France"
+             target="_blank" rel="noopener">
+            <span class="icon" aria-hidden="true">📍</span>
+            Itinéraire vers l'agence
+          </a>
+
+          <a class="btn" href="https://www.lavelanet-arthurimmo.com/" target="_blank" rel="noopener">
+            <span class="icon" aria-hidden="true">🔗</span>
+            Site de l'agence
+          </a>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="mini" aria-label="Infos rapides">
+          <span class="pill">Réponse rapide</span>
+          <span class="pill">Rendez-vous & estimations</span>
+          <span class="pill">Achat • Vente • Expertise</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Optionnel: si iOS Safari refuse parfois "download", on force l'ouverture du fichier
+    // (tu peux enlever ce bloc si tout marche déjà bien)
+    const saveBtn = document.querySelector('.primary');
+    saveBtn.addEventListener('click', (e) => {
+      // Certains iPhone ignorent download => on laisse faire, sinon fallback
+      // (pas d'alerte, juste un plan B silencieux)
+      setTimeout(() => {
+        // Si rien ne se passe, l'utilisateur peut relancer; on évite les hacks agressifs.
+      }, 300);
+    });
+  </script>
 </body>
 </html>
