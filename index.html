@@ -18,226 +18,166 @@
       --radius: 30px;
       --orange:#f2a100;
       --orange2:#d88a00;
-      --btnLight: rgba(255,255,255,.86);
+      --btnLight: rgba(255,255,255,.88);
       --btnText:#1b1f2a;
     }
 
     *{box-sizing:border-box}
-    html,body{height:100%}
     body{
       margin:0;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display","SF Pro Text", Inter, Segoe UI, Roboto, Arial, sans-serif;
+      min-height:100vh;
+      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,Segoe UI,Roboto,Arial,sans-serif;
       color:var(--text);
       background:
         radial-gradient(900px 600px at 50% 20%, rgba(255,255,255,.09), transparent 55%),
-        radial-gradient(800px 800px at 20% 80%, rgba(242,161,0,.10), transparent 60%),
         linear-gradient(180deg, var(--bg2), var(--bg1));
       display:flex;
       align-items:center;
       justify-content:center;
-      padding: 26px 16px;
+      padding:24px 16px;
     }
 
-    .wrap{
-      width:min(420px, 100%);
-    }
+    .wrap{ width:min(420px,100%); }
 
     .card{
-      background: var(--card);
-      border: 1px solid var(--stroke);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      padding: 26px 22px 18px;
-      position:relative;
+      background:var(--card);
+      border:1px solid var(--stroke);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(14px);
+      padding:28px 22px 18px;
     }
 
+    /* LOGO PLUS GRAND */
     .logoWrap{
       display:flex;
       justify-content:center;
-      margin-top: 2px;
-      margin-bottom: 16px;
+      margin-bottom:18px;
     }
-
     .logoRing{
-      width: 112px;
-      height: 112px;
-      border-radius: 999px;
+      width:128px;
+      height:128px;
+      border-radius:50%;
       display:grid;
       place-items:center;
-      background: rgba(255,255,255,.06);
-      border: 6px solid rgba(255,255,255,.18);
-      box-shadow: 0 18px 40px rgba(0,0,0,.35);
+      background:rgba(255,255,255,.06);
+      border:6px solid rgba(255,255,255,.18);
+      box-shadow:0 18px 40px rgba(0,0,0,.35);
     }
-
     .logoRing img{
-      width: 82px;
-      height: 82px;
-      border-radius: 999px;
-      object-fit: cover;
-      background: rgba(0,0,0,.25);
+      width:96px;
+      height:96px;
+      border-radius:50%;
+      object-fit:cover;
     }
 
     h1{
-      margin: 0;
+      margin:0;
       text-align:center;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      font-size: clamp(34px, 8.6vw, 46px);
-      line-height: 1.06;
+      font-size:42px;
+      font-weight:800;
+      letter-spacing:-0.02em;
+      line-height:1.05;
     }
 
     .subtitle{
-      margin: 10px 0 18px;
+      margin:10px 0 18px;
       text-align:center;
-      color: var(--muted);
-      font-size: clamp(15px, 3.7vw, 18px);
-      line-height: 1.25;
-      font-weight: 500;
-      /* IMPORTANT: pas d'ellipsis => Lavelanet reste visible */
-      white-space: normal;
-      overflow: visible;
-      text-overflow: clip;
+      color:var(--muted);
+      font-size:17px;
+      font-weight:500;
+      line-height:1.3;
     }
 
     .btn{
       width:100%;
       border:none;
-      border-radius: 999px;
-      padding: 16px 18px;
-      font-size: 18px;          /* ↓ typographie */
-      font-weight: 750;
+      border-radius:999px;
+      padding:15px 18px;
+      font-size:18px;
+      font-weight:700;
       cursor:pointer;
       text-decoration:none;
       display:flex;
       align-items:center;
       justify-content:center;
-      gap:10px;
-      transition: transform .08s ease, filter .12s ease;
-      user-select:none;
-      -webkit-tap-highlight-color: transparent;
+      transition:transform .08s ease;
     }
-    .btn:active{ transform: scale(.99); }
+    .btn:active{ transform:scale(.99); }
 
     .btnPrimary{
-      background: linear-gradient(180deg, var(--orange), var(--orange2));
-      color: white;
-      box-shadow: 0 14px 26px rgba(242,161,0,.25);
-      margin: 10px 0 12px;
-      padding: 16px 18px;
-      font-size: 20px;         /* ↓ typographie */
+      background:linear-gradient(180deg,var(--orange),var(--orange2));
+      color:#fff;
+      font-size:20px;
+      margin:10px 0 12px;
+      box-shadow:0 14px 26px rgba(242,161,0,.25);
     }
 
     .btnLight{
-      background: var(--btnLight);
-      color: var(--btnText);
-      box-shadow: 0 18px 34px rgba(0,0,0,.20);
-      margin: 12px 0;
-      padding: 15px 18px;
-      font-size: 18px;         /* ↓ typographie */
+      background:var(--btnLight);
+      color:var(--btnText);
+      margin:12px 0;
+      box-shadow:0 18px 34px rgba(0,0,0,.2);
     }
 
-    .btnIcon{
-      width: 22px;
-      height: 22px;
-      display:inline-grid;
-      place-items:center;
-      opacity:.9;
-      filter: grayscale(1);
-    }
-
+    /* LIGNE DU BAS */
     .bottomLine{
-      margin-top: 12px;
-      padding-top: 10px;
-      border-top: 1px solid rgba(255,255,255,.10);
-      text-align:center;
-      color: var(--muted2);
-      font-size: 16px;
+      margin-top:12px;
+      padding-top:10px;
+      border-top:1px solid rgba(255,255,255,.1);
       display:flex;
-      align-items:center;
       justify-content:center;
-      gap: 12px;
-      flex-wrap: nowrap; /* comme ton image entourée */
-      white-space: nowrap;
+      gap:12px;
+      font-size:16px;
+      color:var(--muted2);
+      white-space:nowrap;
     }
 
     .bottomLine a{
-      color: var(--muted);
+      color:var(--muted);
       text-decoration:none;
-      font-weight: 650;
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      transition: background .12s ease, color .12s ease;
+      font-weight:600;
     }
 
-    .bottomLine a:active{ transform: scale(.99); }
-    .bottomLine a:hover{ background: rgba(255,255,255,.06); }
-
-    .dot{
-      opacity:.45;
-      transform: translateY(-1px);
-      user-select:none;
-    }
-
-    /* petits écrans: on garde tout visible, et on réduit encore un peu */
-    @media (max-width: 360px){
-      .logoRing{ width:104px; height:104px; }
-      .logoRing img{ width:76px; height:76px; }
-      .btnPrimary{ font-size: 19px; }
-      .btnLight{ font-size: 17px; }
-      .bottomLine{ font-size: 15px; gap: 10px; }
-      .bottomLine a{ padding: 7px 9px; }
-    }
+    .dot{ opacity:.45; }
   </style>
 </head>
 
 <body>
   <main class="wrap">
-    <section class="card" aria-label="Carte de visite">
+    <section class="card">
+
       <div class="logoWrap">
         <div class="logoRing">
-          <!-- IMPORTANT: ton fichier s'appelle bien "logo-arthurimmo.JPG" -->
-          <img src="./logo-arthurimmo.JPG" alt="Logo Arthurimmo" />
+          <img src="./logo-arthurimmo.JPG" alt="Arthurimmo Lavelanet">
         </div>
       </div>
 
       <h1>Nicolas Castan</h1>
-      <div class="subtitle">Agent immobilier&nbsp;|&nbsp;Arthurimmo Lavelanet</div>
+      <div class="subtitle">Agent immobilier | Arthurimmo Lavelanet</div>
 
-      <!-- vCard (GitHub Pages télécharge le .vcf) -->
       <a class="btn btnPrimary" href="./contact.vcf" download>
-        <span class="btnIcon">💾</span>
         Sauvegarder le contact
       </a>
 
-      <!-- Appeler -->
       <a class="btn btnLight" href="tel:+33642031538">
-        <span class="btnIcon">📞</span>
         Appeler
       </a>
 
-      <!-- Email -->
       <a class="btn btnLight" href="mailto:nicolas.castan@agence-arthurimmo.com">
-        <span class="btnIcon">✉️</span>
         Envoyer un email
       </a>
 
-      <!-- Ligne du bas: comme l'image entourée -->
-      <div class="bottomLine" aria-label="Liens rapides">
-        <a href="https://www.google.com/maps/search/?api=1&query=2%20Avenue%20Alsace%20Lorraine%2C%2009300%20Lavelanet%2C%20France" target="_blank" rel="noopener">
-          📍 <span>Localisation</span>
+      <div class="bottomLine">
+        <a href="https://www.google.com/maps/search/?api=1&query=2%20Avenue%20Alsace%20Lorraine%2C%2009300%20Lavelanet" target="_blank">
+          Localisation
         </a>
-
         <span class="dot">•</span>
-
-        <a href="https://www.lavelanet-arthurimmo.com/" target="_blank" rel="noopener">
-          🌐 <span>Site de l’agence</span>
+        <a href="https://www.lavelanet-arthurimmo.com/" target="_blank">
+          Site de l’agence
         </a>
       </div>
+
     </section>
   </main>
 </body>
