@@ -2,306 +2,243 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Nicolas Castan — Carte de visite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nicolas Castan — Arthurimmo Lavelanet</title>
 
   <style>
     :root{
-      --bg1:#0f1624;
-      --bg2:#1b2336;
-      --card:#2a3347cc;
-      --cardBorder:#ffffff14;
-
-      --text:#f3f6ff;
-      --muted:#c7cedd;
-
-      --brand:#f0a000; /* Arthurimmo-like orange */
-      --brand2:#d98b00;
-
-      --btn:#ffffffd6;
-      --btnText:#1a1f2b;
-
-      --shadow: 0 18px 50px rgba(0,0,0,.45);
-      --shadow2: 0 10px 24px rgba(0,0,0,.28);
-
-      --radius:26px;
-      --radiusBtn:22px;
+      --bg1:#0b1020;
+      --bg2:#1b2438;
+      --card: rgba(255,255,255,.08);
+      --stroke: rgba(255,255,255,.10);
+      --text:#f2f4f8;
+      --muted: rgba(255,255,255,.72);
+      --muted2: rgba(255,255,255,.55);
+      --shadow: 0 20px 55px rgba(0,0,0,.45);
+      --radius: 30px;
+      --orange:#f2a100;
+      --orange2:#d88a00;
+      --btnLight: rgba(255,255,255,.86);
+      --btnText:#1b1f2a;
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display","SF Pro Text", Inter, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--text);
       background:
-        radial-gradient(1200px 700px at 50% -10%, #3c475f 0%, transparent 60%),
-        radial-gradient(900px 500px at 50% 110%, #27314a 0%, transparent 60%),
-        linear-gradient(180deg, var(--bg1), var(--bg2));
+        radial-gradient(900px 600px at 50% 20%, rgba(255,255,255,.09), transparent 55%),
+        radial-gradient(800px 800px at 20% 80%, rgba(242,161,0,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg2), var(--bg1));
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:24px 18px;
+      padding: 26px 16px;
     }
 
     .wrap{
-      width:min(430px, 100%);
+      width:min(420px, 100%);
     }
 
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid var(--cardBorder);
+      background: var(--card);
+      border: 1px solid var(--stroke);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       padding: 26px 22px 18px;
       position:relative;
-      overflow:hidden;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
     }
 
-    /* subtle premium sheen */
-    .card:before{
-      content:"";
-      position:absolute;
-      inset:-40% -50%;
-      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.14), transparent 42%),
-                  radial-gradient(circle at 70% 65%, rgba(255,255,255,.10), transparent 48%);
-      transform: rotate(-8deg);
-      pointer-events:none;
-    }
-
-    .top{
+    .logoWrap{
       display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:14px;
-      position:relative;
-      z-index:1;
+      justify-content:center;
+      margin-top: 2px;
+      margin-bottom: 16px;
     }
 
     .logoRing{
-      width:132px;
-      height:132px;
-      border-radius:999px;
+      width: 112px;
+      height: 112px;
+      border-radius: 999px;
       display:grid;
       place-items:center;
       background: rgba(255,255,255,.06);
-      box-shadow: 0 14px 26px rgba(0,0,0,.35);
-      border: 1px solid rgba(255,255,255,.12);
-      position:relative;
-    }
-    .logoRing:after{
-      content:"";
-      position:absolute;
-      inset:10px;
-      border-radius:999px;
-      border:3px solid rgba(255,255,255,.70);
-      opacity:.75;
+      border: 6px solid rgba(255,255,255,.18);
+      box-shadow: 0 18px 40px rgba(0,0,0,.35);
     }
 
-    .logo{
-      width:98px;
-      height:98px;
-      border-radius:999px;
-      object-fit:cover;
-      display:block;
-      box-shadow: 0 10px 18px rgba(0,0,0,.25);
-      background:#111827;
+    .logoRing img{
+      width: 82px;
+      height: 82px;
+      border-radius: 999px;
+      object-fit: cover;
+      background: rgba(0,0,0,.25);
     }
 
     h1{
-      margin:0;
-      font-size: 44px;
-      line-height:1.05;
-      letter-spacing:-0.6px;
+      margin: 0;
       text-align:center;
       font-weight: 800;
-      text-shadow: 0 10px 22px rgba(0,0,0,.35);
+      letter-spacing: -0.02em;
+      font-size: clamp(34px, 8.6vw, 46px);
+      line-height: 1.06;
     }
 
-    /* ✅ reduce typography so "Lavelanet" fits + keep elegant */
     .subtitle{
-      margin:0;
-      font-size: 19px;          /* was larger -> now safer */
-      line-height:1.25;
-      color: var(--muted);
+      margin: 10px 0 18px;
       text-align:center;
+      color: var(--muted);
+      font-size: clamp(15px, 3.7vw, 18px);
+      line-height: 1.25;
       font-weight: 500;
-      letter-spacing: .2px;
-      padding: 0 6px;
-    }
-
-    .actions{
-      margin-top: 18px;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      position:relative;
-      z-index:1;
+      /* IMPORTANT: pas d'ellipsis => Lavelanet reste visible */
+      white-space: normal;
+      overflow: visible;
+      text-overflow: clip;
     }
 
     .btn{
       width:100%;
       border:none;
-      border-radius: var(--radiusBtn);
-      padding: 14px 16px;
-      font-size: 18px;
+      border-radius: 999px;
+      padding: 16px 18px;
+      font-size: 18px;          /* ↓ typographie */
       font-weight: 750;
       cursor:pointer;
+      text-decoration:none;
       display:flex;
       align-items:center;
       justify-content:center;
-      gap:12px;
-      text-decoration:none;
+      gap:10px;
+      transition: transform .08s ease, filter .12s ease;
       user-select:none;
       -webkit-tap-highlight-color: transparent;
-      transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
-      box-shadow: var(--shadow2);
-      position:relative;
-      overflow:hidden;
     }
-
-    /* micro premium highlight sweep */
-    .btn:before{
-      content:"";
-      position:absolute;
-      top:-40%;
-      left:-60%;
-      width:60%;
-      height:180%;
-      transform: rotate(18deg);
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
-      transition: left .55s ease;
-      pointer-events:none;
-    }
-    .btn:hover:before{ left:130%; }
-    .btn:active{ transform: translateY(1px) scale(.99); filter: brightness(.98); }
+    .btn:active{ transform: scale(.99); }
 
     .btnPrimary{
-      background: linear-gradient(180deg, var(--brand), var(--brand2));
-      color: #fff;
-      padding: 16px 16px;   /* slightly bigger but not huge */
-      font-size: 20px;
-      font-weight: 800;
+      background: linear-gradient(180deg, var(--orange), var(--orange2));
+      color: white;
+      box-shadow: 0 14px 26px rgba(242,161,0,.25);
+      margin: 10px 0 12px;
+      padding: 16px 18px;
+      font-size: 20px;         /* ↓ typographie */
     }
-    .btnGhost{
-      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.82));
+
+    .btnLight{
+      background: var(--btnLight);
       color: var(--btnText);
-      padding: 13px 16px;
-      font-size: 17px;
-      font-weight: 780;
+      box-shadow: 0 18px 34px rgba(0,0,0,.20);
+      margin: 12px 0;
+      padding: 15px 18px;
+      font-size: 18px;         /* ↓ typographie */
     }
 
-    .icon{
-      width:22px;
-      height:22px;
-      display:inline-block;
+    .btnIcon{
+      width: 22px;
+      height: 22px;
+      display:inline-grid;
+      place-items:center;
       opacity:.9;
+      filter: grayscale(1);
     }
 
-    /* bottom mini-links (small like your mock) */
-    .mini{
-      margin-top: 14px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:14px;
-      color: rgba(255,255,255,.82);
+    .bottomLine{
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      text-align:center;
+      color: var(--muted2);
       font-size: 16px;
-      font-weight: 650;
-      position:relative;
-      z-index:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap: 12px;
+      flex-wrap: nowrap; /* comme ton image entourée */
+      white-space: nowrap;
     }
-    .mini a{
-      color: inherit;
+
+    .bottomLine a{
+      color: var(--muted);
       text-decoration:none;
+      font-weight: 650;
       display:inline-flex;
       align-items:center;
-      gap:8px;
-      padding:10px 12px;
+      gap: 8px;
+      padding: 8px 10px;
       border-radius: 999px;
-      background: rgba(0,0,0,.16);
-      border: 1px solid rgba(255,255,255,.10);
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      -webkit-tap-highlight-color: transparent;
+      transition: background .12s ease, color .12s ease;
     }
-    .mini a:active{ transform: translateY(1px) scale(.99); }
-    .mini a:hover{ background: rgba(0,0,0,.22); border-color: rgba(255,255,255,.16); }
-    .dot{opacity:.45}
 
-    .footerSpace{ height: 4px; }
+    .bottomLine a:active{ transform: scale(.99); }
+    .bottomLine a:hover{ background: rgba(255,255,255,.06); }
 
-    /* responsive */
-    @media (max-width:380px){
-      h1{ font-size: 38px; }
-      .subtitle{ font-size: 17px; }
-      .logoRing{ width:120px; height:120px; }
-      .logo{ width:90px; height:90px; }
+    .dot{
+      opacity:.45;
+      transform: translateY(-1px);
+      user-select:none;
+    }
+
+    /* petits écrans: on garde tout visible, et on réduit encore un peu */
+    @media (max-width: 360px){
+      .logoRing{ width:104px; height:104px; }
+      .logoRing img{ width:76px; height:76px; }
+      .btnPrimary{ font-size: 19px; }
+      .btnLight{ font-size: 17px; }
+      .bottomLine{ font-size: 15px; gap: 10px; }
+      .bottomLine a{ padding: 7px 9px; }
     }
   </style>
 </head>
 
 <body>
   <main class="wrap">
-    <section class="card" aria-label="Carte de visite digitale Nicolas Castan">
-      <div class="top">
-        <!-- ✅ Mets ton fichier logo ici (dans ton repo) -->
-        <!-- IMPORTANT: renomme ton fichier en "logo-arthurimmo.jpg" (sans .JPG) si possible -->
+    <section class="card" aria-label="Carte de visite">
+      <div class="logoWrap">
         <div class="logoRing">
-          <img class="logo" src="logo-arthurimmo.JPG" alt="Logo Arthurimmo" />
+          <!-- IMPORTANT: ton fichier s'appelle bien "logo-arthurimmo.JPG" -->
+          <img src="./logo-arthurimmo.JPG" alt="Logo Arthurimmo" />
         </div>
-
-        <h1>Nicolas Castan</h1>
-        <p class="subtitle">Agent immobilier | Arthurimmo Lavelanet</p>
       </div>
 
-      <div class="actions">
-        <!-- Bouton 1: téléchargement vCard -->
-        <a class="btn btnPrimary" href="./contact.vcf" download>
-          <span class="icon" aria-hidden="true">💾</span>
-          Sauvegarder le contact
-        </a>
+      <h1>Nicolas Castan</h1>
+      <div class="subtitle">Agent immobilier&nbsp;|&nbsp;Arthurimmo Lavelanet</div>
 
-        <!-- Bouton 2: appeler -->
-        <a class="btn btnGhost" href="tel:+33642031538">
-          <span class="icon" aria-hidden="true">📞</span>
-          Appeler
-        </a>
+      <!-- vCard (GitHub Pages télécharge le .vcf) -->
+      <a class="btn btnPrimary" href="./contact.vcf" download>
+        <span class="btnIcon">💾</span>
+        Sauvegarder le contact
+      </a>
 
-        <!-- Bouton 3: email -->
-        <a class="btn btnGhost" href="mailto:nicolas.castan@agence-arthurimmo.com">
-          <span class="icon" aria-hidden="true">✉️</span>
-          Envoyer un email
-        </a>
-      </div>
+      <!-- Appeler -->
+      <a class="btn btnLight" href="tel:+33642031538">
+        <span class="btnIcon">📞</span>
+        Appeler
+      </a>
 
-      <!-- Mini liens bas (actifs) -->
-      <div class="mini" aria-label="Liens rapides">
-        <a href="https://maps.google.com/?q=2%20Avenue%20Alsace%20Lorraine%2C%2009300%20Lavelanet%2C%20France" target="_blank" rel="noopener">
-          <span aria-hidden="true">📍</span> Localisation
+      <!-- Email -->
+      <a class="btn btnLight" href="mailto:nicolas.castan@agence-arthurimmo.com">
+        <span class="btnIcon">✉️</span>
+        Envoyer un email
+      </a>
+
+      <!-- Ligne du bas: comme l'image entourée -->
+      <div class="bottomLine" aria-label="Liens rapides">
+        <a href="https://www.google.com/maps/search/?api=1&query=2%20Avenue%20Alsace%20Lorraine%2C%2009300%20Lavelanet%2C%20France" target="_blank" rel="noopener">
+          📍 <span>Localisation</span>
         </a>
 
         <span class="dot">•</span>
 
         <a href="https://www.lavelanet-arthurimmo.com/" target="_blank" rel="noopener">
-          <span aria-hidden="true">🌐</span> Site de l’agence
+          🌐 <span>Site de l’agence</span>
         </a>
       </div>
-
-      <div class="footerSpace"></div>
     </section>
   </main>
-
-  <script>
-    // Micro-effet premium (2): petite vibration + glow au tap sur mobile
-    // (natif iOS/Android, discret)
-    const tapTargets = document.querySelectorAll('.btn, .mini a');
-    tapTargets.forEach(el => {
-      el.addEventListener('click', () => {
-        if (navigator.vibrate) navigator.vibrate(10);
-      });
-    });
-  </script>
 </body>
 </html>
